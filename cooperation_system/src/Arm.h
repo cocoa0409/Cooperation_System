@@ -8,6 +8,27 @@
 
 #ifndef Arm_h
 #define Arm_h
-
+#include "Config.h"
+class Arm{
+private:
+    int id_;
+    std::string ip_;
+    std::string port_;
+    
+public:
+    //Constructor
+    Arm();
+    Arm(Config configuration);
+    Arm(int id,std::string arm_ip, std::string arm_port);
+    ~Arm();
+    
+    //Methods
+    bool SendTcp(std::string Message) const;
+    std::string ReceiveTcp() const;
+    bool Arm_move() const;
+    
+    friend std::ostream & operator<<(std::ostream &os, const Arm &c);
+    
+};
 
 #endif /* Arm_h */

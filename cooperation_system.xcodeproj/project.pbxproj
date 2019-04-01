@@ -35,6 +35,8 @@
 		4136231D2251AA4D007668B3 /* Hand.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Hand.cpp; sourceTree = "<group>"; };
 		413623222251AA86007668B3 /* ControlSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ControlSystem.cpp; sourceTree = "<group>"; };
 		413623242251AADA007668B3 /* Arm.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Arm.cpp; sourceTree = "<group>"; };
+		413623262251AD57007668B3 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		413623272251AFD5007668B3 /* keypoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = keypoint.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,8 @@
 				413623242251AADA007668B3 /* Arm.cpp */,
 				4136231B2251AA2A007668B3 /* ControlSystem.h */,
 				413623222251AA86007668B3 /* ControlSystem.cpp */,
+				413623262251AD57007668B3 /* Config.h */,
+				413623272251AFD5007668B3 /* keypoint.h */,
 			);
 			path = src;
 			sourceTree = "<group>";

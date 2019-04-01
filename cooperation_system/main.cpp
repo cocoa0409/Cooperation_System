@@ -7,9 +7,11 @@
 //
 
 #include <iostream>
+#include "src/Hand.h"
+
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    Hand b={1,"192.168.78.198","8080"};
+    std::cout << b;
     return 0;
 }
