@@ -12,6 +12,21 @@
 #include <string>
 #include <iostream>
 
+//Scoket
+#include <errno.h>
+#include <stdio.h>
+#include <sys/types.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <unistd.h>
+#include <netdb.h>
+#include <arpa/inet.h>
+#include <fcntl.h>
+#include <stdlib.h>
+
+typedef int SocketDescriptor;
+typedef sockaddr_in ServerAddress;
+
 class Config{
     
 };

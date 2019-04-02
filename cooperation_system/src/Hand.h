@@ -14,18 +14,23 @@ class Hand{
 private:
     int id_;
     std::string ip_;
-    std::string port_;
+    unsigned short port_;
+    bool status_;
+
+    
+    SocketDescriptor SocketDescriptor_;
+    ServerAddress ServerAddress_;
     
 public:
 //Constructor
     Hand();
     Hand(Config configuration);
-    Hand(int id,std::string hand_ip, std::string hand_port);
+    Hand(int id,std::string Hand_ip, unsigned short Hand_port);
     ~Hand();
     
 //Methods
     bool SendTcp(std::string Message) const;
-    std::string ReceiveTcp() const;
+    bool ReceiveTcp(std::string & Message) const;
     bool Hand_move() const;
     
     friend std::ostream & operator<<(std::ostream &os, const Hand &c);
