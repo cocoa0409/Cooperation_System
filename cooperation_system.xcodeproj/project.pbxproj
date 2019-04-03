@@ -7,17 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4136234322546302007668B3 /* Cup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4136233D225455B8007668B3 /* Cup.cpp */; };
-		413623452254635C007668B3 /* Cup.h in Sources */ = {isa = PBXBuildFile; fileRef = 4136231C2251AA33007668B3 /* Cup.h */; };
-		413623462254635C007668B3 /* Hand.h in Sources */ = {isa = PBXBuildFile; fileRef = 413623192251AA14007668B3 /* Hand.h */; };
-		413623472254635C007668B3 /* Hand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4136231D2251AA4D007668B3 /* Hand.cpp */; };
-		413623482254635C007668B3 /* Arm.h in Sources */ = {isa = PBXBuildFile; fileRef = 4136231A2251AA1D007668B3 /* Arm.h */; };
-		413623492254635C007668B3 /* Arm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413623242251AADA007668B3 /* Arm.cpp */; };
-		4136234A2254635C007668B3 /* ControlSystem.h in Sources */ = {isa = PBXBuildFile; fileRef = 4136231B2251AA2A007668B3 /* ControlSystem.h */; };
-		4136234B2254635C007668B3 /* ControlSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413623222251AA86007668B3 /* ControlSystem.cpp */; };
-		4136234C2254635C007668B3 /* Config.h in Sources */ = {isa = PBXBuildFile; fileRef = 413623262251AD57007668B3 /* Config.h */; };
-		4136234D2254635C007668B3 /* keypoint.h in Sources */ = {isa = PBXBuildFile; fileRef = 413623272251AFD5007668B3 /* keypoint.h */; };
-		41362351225469AD007668B3 /* test_of_Cup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41362341225460FF007668B3 /* test_of_Cup.cpp */; };
+		413623542254AD6D007668B3 /* Cup.h in Sources */ = {isa = PBXBuildFile; fileRef = 4136231C2251AA33007668B3 /* Cup.h */; };
+		413623552254AD6D007668B3 /* Cup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4136233D225455B8007668B3 /* Cup.cpp */; };
+		413623582254AE38007668B3 /* Config.h in Sources */ = {isa = PBXBuildFile; fileRef = 413623262251AD57007668B3 /* Config.h */; };
+		413623592254AE4A007668B3 /* Hand.h in Sources */ = {isa = PBXBuildFile; fileRef = 413623192251AA14007668B3 /* Hand.h */; };
+		4136235A2254AE4A007668B3 /* Hand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4136231D2251AA4D007668B3 /* Hand.cpp */; };
+		4136235B2254AE4A007668B3 /* Arm.h in Sources */ = {isa = PBXBuildFile; fileRef = 4136231A2251AA1D007668B3 /* Arm.h */; };
+		4136235C2254AE4A007668B3 /* Arm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413623242251AADA007668B3 /* Arm.cpp */; };
+		4136235D2254AE4A007668B3 /* ControlSystem.h in Sources */ = {isa = PBXBuildFile; fileRef = 4136231B2251AA2A007668B3 /* ControlSystem.h */; };
+		4136235E2254AE4A007668B3 /* ControlSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413623222251AA86007668B3 /* ControlSystem.cpp */; };
+		4136235F2254AE4A007668B3 /* keypoint.h in Sources */ = {isa = PBXBuildFile; fileRef = 413623272251AFD5007668B3 /* keypoint.h */; };
+		413623602254AE50007668B3 /* test_of_Cup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41362341225460FF007668B3 /* test_of_Cup.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -194,17 +194,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41362351225469AD007668B3 /* test_of_Cup.cpp in Sources */,
-				413623452254635C007668B3 /* Cup.h in Sources */,
-				413623462254635C007668B3 /* Hand.h in Sources */,
-				413623472254635C007668B3 /* Hand.cpp in Sources */,
-				413623482254635C007668B3 /* Arm.h in Sources */,
-				413623492254635C007668B3 /* Arm.cpp in Sources */,
-				4136234A2254635C007668B3 /* ControlSystem.h in Sources */,
-				4136234B2254635C007668B3 /* ControlSystem.cpp in Sources */,
-				4136234C2254635C007668B3 /* Config.h in Sources */,
-				4136234D2254635C007668B3 /* keypoint.h in Sources */,
-				4136234322546302007668B3 /* Cup.cpp in Sources */,
+				413623602254AE50007668B3 /* test_of_Cup.cpp in Sources */,
+				413623592254AE4A007668B3 /* Hand.h in Sources */,
+				4136235A2254AE4A007668B3 /* Hand.cpp in Sources */,
+				4136235B2254AE4A007668B3 /* Arm.h in Sources */,
+				4136235C2254AE4A007668B3 /* Arm.cpp in Sources */,
+				4136235D2254AE4A007668B3 /* ControlSystem.h in Sources */,
+				4136235E2254AE4A007668B3 /* ControlSystem.cpp in Sources */,
+				4136235F2254AE4A007668B3 /* keypoint.h in Sources */,
+				413623582254AE38007668B3 /* Config.h in Sources */,
+				413623542254AD6D007668B3 /* Cup.h in Sources */,
+				413623552254AD6D007668B3 /* Cup.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

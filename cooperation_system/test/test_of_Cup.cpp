@@ -9,15 +9,19 @@
 #include <iostream>
 #include "../obj/Cup.h"
 
+using namespace std;
 int main(){
     Eigen::Vector3d center(100,200,300);
-    Eigen::Vector3d X_axis(0,0,1);
-    Eigen::Vector3d Y_axis(0,1,0);
-    Eigen::Vector3d Z_axis(-1,0,0);
+    //杯子平躺 Z轴方向指向(1,1,0)
     
-    Cup cup1 ={1,center,5.1,6.8,78.0,X_axis ,Y_axis,Z_axis};
+    Eigen::Vector3d Z_axis(1,1,0);
+    Z_axis.normalize();
     
+    Cup cup1 ={1,center,5,10,78.0,Z_axis};
     cup1.HandCenterToWorldCord();
+
+    cout<<cup1.getRotationWorldToHand()<<endl;
+    cout<<cup1.getEulerAngleWorldToHand()<<endl;
 
     
 }
