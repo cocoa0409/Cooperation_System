@@ -20,7 +20,10 @@ int main(){
     Cup cup1 ={1,center,5,10,78.0,Z_axis};
     cup1.HandCenterToWorldCord();
 
+    //给出基坐标系到机械手坐标系的旋转
     cout<<cup1.getRotationWorldToHand()<<endl;
+    
+    //给出基坐标系到机械手坐标系的欧拉角
     cout<<cup1.getEulerAngleWorldToHand()<<endl;
 
     
