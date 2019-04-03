@@ -8,8 +8,10 @@
 
 #ifndef keypoint_h
 #define keypoint_h
+#include "Config.h"
 
 class keypoint{
+private:
     
 };
 

@@ -26,10 +26,4 @@ int main(int argc, const char * argv[]){
         arm1.SendTcp(sendset2[i]);
         arm1.ReceiveTcp(res);
     }
-    
-    
-    
-
-    
-    
 }

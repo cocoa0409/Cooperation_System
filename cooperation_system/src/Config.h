@@ -23,6 +23,9 @@
 #include <arpa/inet.h>
 #include <fcntl.h>
 #include <stdlib.h>
+//eigen
+#include <Eigen/Core>
+#include <Eigen/Geometry>
 
 typedef int SocketDescriptor;
 typedef sockaddr_in ServerAddress;

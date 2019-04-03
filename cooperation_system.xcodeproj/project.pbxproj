@@ -7,9 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4136233622533510007668B3 /* test_of_HandArm_tcp_client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4136233522533510007668B3 /* test_of_HandArm_tcp_client.cpp */; };
-		41362337225339D1007668B3 /* Arm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413623242251AADA007668B3 /* Arm.cpp */; };
-		41362338225339D9007668B3 /* Hand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4136231D2251AA4D007668B3 /* Hand.cpp */; };
+		4136234322546302007668B3 /* Cup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4136233D225455B8007668B3 /* Cup.cpp */; };
+		413623452254635C007668B3 /* Cup.h in Sources */ = {isa = PBXBuildFile; fileRef = 4136231C2251AA33007668B3 /* Cup.h */; };
+		413623462254635C007668B3 /* Hand.h in Sources */ = {isa = PBXBuildFile; fileRef = 413623192251AA14007668B3 /* Hand.h */; };
+		413623472254635C007668B3 /* Hand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4136231D2251AA4D007668B3 /* Hand.cpp */; };
+		413623482254635C007668B3 /* Arm.h in Sources */ = {isa = PBXBuildFile; fileRef = 4136231A2251AA1D007668B3 /* Arm.h */; };
+		413623492254635C007668B3 /* Arm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413623242251AADA007668B3 /* Arm.cpp */; };
+		4136234A2254635C007668B3 /* ControlSystem.h in Sources */ = {isa = PBXBuildFile; fileRef = 4136231B2251AA2A007668B3 /* ControlSystem.h */; };
+		4136234B2254635C007668B3 /* ControlSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413623222251AA86007668B3 /* ControlSystem.cpp */; };
+		4136234C2254635C007668B3 /* Config.h in Sources */ = {isa = PBXBuildFile; fileRef = 413623262251AD57007668B3 /* Config.h */; };
+		4136234D2254635C007668B3 /* keypoint.h in Sources */ = {isa = PBXBuildFile; fileRef = 413623272251AFD5007668B3 /* keypoint.h */; };
+		41362351225469AD007668B3 /* test_of_Cup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41362341225460FF007668B3 /* test_of_Cup.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +47,11 @@
 		4136233022533432007668B3 /* TcpServer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TcpServer.cpp; sourceTree = "<group>"; };
 		413623322253347F007668B3 /* TcpClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TcpClient.cpp; sourceTree = "<group>"; };
 		4136233522533510007668B3 /* test_of_HandArm_tcp_client.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_of_HandArm_tcp_client.cpp; sourceTree = "<group>"; };
+		4136233922534770007668B3 /* test_of_eigen.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_of_eigen.cpp; sourceTree = "<group>"; };
+		4136233B225449B9007668B3 /* test_of_eigen_geo.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_of_eigen_geo.cpp; sourceTree = "<group>"; };
+		4136233D225455B8007668B3 /* Cup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Cup.cpp; sourceTree = "<group>"; };
+		4136233F22545822007668B3 /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
+		41362341225460FF007668B3 /* test_of_Cup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_of_Cup.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				4136231C2251AA33007668B3 /* Cup.h */,
+				4136233D225455B8007668B3 /* Cup.cpp */,
 			);
 			path = obj;
 			sourceTree = "<group>";
@@ -116,6 +130,10 @@
 			isa = PBXGroup;
 			children = (
 				4136233522533510007668B3 /* test_of_HandArm_tcp_client.cpp */,
+				4136233922534770007668B3 /* test_of_eigen.cpp */,
+				4136233B225449B9007668B3 /* test_of_eigen_geo.cpp */,
+				4136233F22545822007668B3 /* test.cpp */,
+				41362341225460FF007668B3 /* test_of_Cup.cpp */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -176,9 +194,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41362338225339D9007668B3 /* Hand.cpp in Sources */,
-				41362337225339D1007668B3 /* Arm.cpp in Sources */,
-				4136233622533510007668B3 /* test_of_HandArm_tcp_client.cpp in Sources */,
+				41362351225469AD007668B3 /* test_of_Cup.cpp in Sources */,
+				413623452254635C007668B3 /* Cup.h in Sources */,
+				413623462254635C007668B3 /* Hand.h in Sources */,
+				413623472254635C007668B3 /* Hand.cpp in Sources */,
+				413623482254635C007668B3 /* Arm.h in Sources */,
+				413623492254635C007668B3 /* Arm.cpp in Sources */,
+				4136234A2254635C007668B3 /* ControlSystem.h in Sources */,
+				4136234B2254635C007668B3 /* ControlSystem.cpp in Sources */,
+				4136234C2254635C007668B3 /* Config.h in Sources */,
+				4136234D2254635C007668B3 /* keypoint.h in Sources */,
+				4136234322546302007668B3 /* Cup.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +326,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/eigen/3.3.5/include/eigen3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -308,6 +335,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = /usr/local/Cellar/eigen/3.3.5/include/eigen3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

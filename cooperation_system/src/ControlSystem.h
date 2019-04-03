@@ -8,6 +8,21 @@
 
 #ifndef ControlSystem_h
 #define ControlSystem_h
+#include "Hand.h"
+#include "Arm.h"
 
+class ControlSystem{
+private:
+    Hand hand_;
+    Arm arm_;
+    
+public:
+    
+    bool move()
+    
+    
+    
+    
+}
 
 #endif /* ControlSystem_h */
