@@ -53,13 +53,14 @@ Arm::Arm(int id,std::string Arm_ip, unsigned short Arm_port){
 }
 
 Arm::~Arm(){
-    close(SocketDescriptor_);
-    std::cout<<"<Arm>|close ok! "<<std::endl;
+    if(-1 == close(SocketDescriptor_)){
+        std::cout<<"<Arm>|close ok! "<<std::endl;
+    }
 }
 
 bool Arm::SendTcp(std::string message) const{
     try{
-        if( -1 == send(SocketDescriptor_,&message,message.size()+1,0)){
+        if( -1 == send(SocketDescriptor_,message.c_str(),message.size(),0)){
             throw "<Arm>|<send fail> ! ";
         }
     }
@@ -87,6 +88,17 @@ bool Arm::ReceiveTcp(std::string & message) const{
     return true;
     
 }
+
+void Arm::Arm_move(std::string & Send) const{
+    std::string Recv = "" ;
+    SendTcp(Send);
+    ReceiveTcp(Recv);
+    if ( Recv == "ok!Armmovefinished!"){
+        std::cout<<"<Arm>|-----move ok! : "+Send<<std::endl;
+    }
+}
+
+
 
 
 std::ostream & operator<<(std::ostream &os, const Arm &c){

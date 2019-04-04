@@ -10,6 +10,7 @@
 #define Cup_h
 
 #include "../src/Config.h"
+#include "../src/KeyPoint.h"
 
 class Cup{
 private:
@@ -24,12 +25,13 @@ private:
     Eigen::Vector3d Z_axis_;
     
 
-    Eigen::Isometry3d WorldToCup_;//这个是自己建系
-    Eigen::Isometry3d CupToHand_;//这个是提前给定的
+    Eigen::Isometry3d WorldToCup_;//这个是自己建 物体坐标系相对于基坐标系
+    Eigen::Isometry3d CupToHand_;//这个是 机械手坐标系相对于物体坐标系
     
-    int HandPara1,HandPara2,HandPara3,HandPara4,HandPara5,HandPara6;//手的六个参数
+    int HandPara1_,HandPara2_,HandPara3_,HandPara4_,HandPara5_,HandPara6_;//手的六个参数
     Eigen::Matrix3d ROTATIONWorldToHand_; //最关键 代表了从世界坐标系到机器手坐标系所需的旋转
     Eigen::Vector3d EulerAngleWorldToHand_; //最关键 代表了从世界坐标系到机器手坐标系的欧拉角
+    Eigen::Vector3d HandCenterToWorldCord_;
     
 public:
     //Constructor
@@ -46,6 +48,8 @@ public:
     
     Eigen::Matrix3d getRotationWorldToHand(){return ROTATIONWorldToHand_;};
     Eigen::Vector3d getEulerAngleWorldToHand(){return EulerAngleWorldToHand_;};
+    
+    std::vector<KeyPoint> PathPlanning();
     
 
 };

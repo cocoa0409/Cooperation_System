@@ -53,13 +53,14 @@ Hand::Hand(int id,std::string hand_ip, unsigned short hand_port){
 }
 
 Hand::~Hand(){
-    close(SocketDescriptor_);
-    std::cout<<"<Hand>|close ok! "<<std::endl;
+    if(-1 == close(SocketDescriptor_)){
+        std::cout<<"<Hand>|close ok! "<<std::endl;
+    }
 }
 
 bool Hand::SendTcp(std::string message) const{
     try{
-        if( -1 == send(SocketDescriptor_,&message,message.size()+1,0)){
+        if( -1 == send(SocketDescriptor_,message.c_str(),message.size(),0)){
             throw "<Hand>|<send fail> ! ";
         }
     }
@@ -86,6 +87,15 @@ bool Hand::ReceiveTcp(std::string & message) const{
     message = buffer;
     return true;
     
+}
+
+void Hand::Hand_move(std::string & Send) const{
+    std::string Recv = "" ;
+    SendTcp(Send);
+    ReceiveTcp(Recv);
+    if ( Recv == "ok!Handmovefinished!"){
+        std::cout<<"<Hand>|-----move ok! : "+Send<<std::endl;
+    }
 }
 
 

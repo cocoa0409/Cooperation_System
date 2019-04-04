@@ -16,8 +16,8 @@
 		4136235C2254AE4A007668B3 /* Arm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413623242251AADA007668B3 /* Arm.cpp */; };
 		4136235D2254AE4A007668B3 /* ControlSystem.h in Sources */ = {isa = PBXBuildFile; fileRef = 4136231B2251AA2A007668B3 /* ControlSystem.h */; };
 		4136235E2254AE4A007668B3 /* ControlSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413623222251AA86007668B3 /* ControlSystem.cpp */; };
-		4136235F2254AE4A007668B3 /* keypoint.h in Sources */ = {isa = PBXBuildFile; fileRef = 413623272251AFD5007668B3 /* keypoint.h */; };
-		413623602254AE50007668B3 /* test_of_Cup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 41362341225460FF007668B3 /* test_of_Cup.cpp */; };
+		413623642255AF7B007668B3 /* KeyPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413623632255AF7B007668B3 /* KeyPoint.cpp */; };
+		413623662255C50B007668B3 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4136233F22545822007668B3 /* test.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,7 +43,6 @@
 		413623222251AA86007668B3 /* ControlSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ControlSystem.cpp; sourceTree = "<group>"; };
 		413623242251AADA007668B3 /* Arm.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Arm.cpp; sourceTree = "<group>"; };
 		413623262251AD57007668B3 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
-		413623272251AFD5007668B3 /* keypoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = keypoint.h; sourceTree = "<group>"; };
 		4136233022533432007668B3 /* TcpServer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TcpServer.cpp; sourceTree = "<group>"; };
 		413623322253347F007668B3 /* TcpClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TcpClient.cpp; sourceTree = "<group>"; };
 		4136233522533510007668B3 /* test_of_HandArm_tcp_client.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_of_HandArm_tcp_client.cpp; sourceTree = "<group>"; };
@@ -52,6 +51,9 @@
 		4136233D225455B8007668B3 /* Cup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Cup.cpp; sourceTree = "<group>"; };
 		4136233F22545822007668B3 /* test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
 		41362341225460FF007668B3 /* test_of_Cup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_of_Cup.cpp; sourceTree = "<group>"; };
+		413623622255AA47007668B3 /* KeyPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyPoint.h; sourceTree = "<group>"; };
+		413623632255AF7B007668B3 /* KeyPoint.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyPoint.cpp; sourceTree = "<group>"; };
+		413623672255D29F007668B3 /* test_of_ControlSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_of_ControlSystem.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +105,8 @@
 				4136231B2251AA2A007668B3 /* ControlSystem.h */,
 				413623222251AA86007668B3 /* ControlSystem.cpp */,
 				413623262251AD57007668B3 /* Config.h */,
-				413623272251AFD5007668B3 /* keypoint.h */,
+				413623622255AA47007668B3 /* KeyPoint.h */,
+				413623632255AF7B007668B3 /* KeyPoint.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -132,8 +135,9 @@
 				4136233522533510007668B3 /* test_of_HandArm_tcp_client.cpp */,
 				4136233922534770007668B3 /* test_of_eigen.cpp */,
 				4136233B225449B9007668B3 /* test_of_eigen_geo.cpp */,
-				4136233F22545822007668B3 /* test.cpp */,
 				41362341225460FF007668B3 /* test_of_Cup.cpp */,
+				413623672255D29F007668B3 /* test_of_ControlSystem.cpp */,
+				4136233F22545822007668B3 /* test.cpp */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -194,14 +198,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				413623602254AE50007668B3 /* test_of_Cup.cpp in Sources */,
+				413623662255C50B007668B3 /* test.cpp in Sources */,
 				413623592254AE4A007668B3 /* Hand.h in Sources */,
+				413623642255AF7B007668B3 /* KeyPoint.cpp in Sources */,
 				4136235A2254AE4A007668B3 /* Hand.cpp in Sources */,
 				4136235B2254AE4A007668B3 /* Arm.h in Sources */,
 				4136235C2254AE4A007668B3 /* Arm.cpp in Sources */,
 				4136235D2254AE4A007668B3 /* ControlSystem.h in Sources */,
 				4136235E2254AE4A007668B3 /* ControlSystem.cpp in Sources */,
-				4136235F2254AE4A007668B3 /* keypoint.h in Sources */,
 				413623582254AE38007668B3 /* Config.h in Sources */,
 				413623542254AD6D007668B3 /* Cup.h in Sources */,
 				413623552254AD6D007668B3 /* Cup.cpp in Sources */,

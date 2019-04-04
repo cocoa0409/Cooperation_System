@@ -9,35 +9,38 @@
 
 #include <iostream>
 #include <cmath>
+#include <vector>
 using namespace std;
+#include "../src/ControlSystem.h"
+#include "../obj/Cup.h"
 
-#include <Eigen/Core>
-// Eigen 几何模块
-#include <Eigen/Geometry>
+
 
 int main ( int argc, char** argv )
 {
-    Eigen::Vector3d A( 1,3,4 );
-    Eigen::Vector3d B( 2,3,4 );
-    Eigen::Vector3d C( 3,3,4 );
-    Eigen::Matrix3d rotation_matrix;
-    A.normalize();
-    B.normalize();
-    C.normalize();
+    Hand hand1={1,"127.0.0.1",3001};
+    Arm arm1={1,"127.0.0.1",3000};
+    ControlSystem CS={hand1,arm1};
+
+    string RECV;
+    CS.hand_.ReceiveTcp(RECV);
+    CS.arm_.ReceiveTcp(RECV);
+    //先receive一次保证正确
     
-    rotation_matrix<<A,B,C;
-    cout<<rotation_matrix<<endl;
-    
-    Eigen::Isometry3d T=Eigen::Isometry3d::Identity();                // 虽然称为3d，实质上是4＊4的矩阵
-//    T.rotate ( rotation_matrix );                                     // 按照rotation_vector进行旋转
-    T.pretranslate ( Eigen::Vector3d ( 1,3,4 ) );
-    
-    
-    cout << "Transform matrix = \n" << T.matrix() <<endl;
-    
-    Eigen::Vector3d v1 ( 1,0,0 );
-    cout<<"v1 tranformed = "<<(T*Eigen::Vector3d::Zero())<<endl;
-    cout<<"v1 tranformed = "<<(T*Eigen::Vector3d::Zero()).transpose()<<endl;
+
+    Eigen::Vector3d Z_axis(1,1,0);
+    Z_axis.normalize();
+    Eigen::Vector3d center(100,200,300);
+    Cup cup1 ={1,center,5,10,0,Z_axis};
+    vector<KeyPoint> Road= cup1.PathPlanning();
+    CS.move(Road);
     
     
+    Eigen::Vector3d Z_axis_2(0,0,1);
+    Cup cup2 ={1,center,5,10,0,Z_axis_2};
+    vector<KeyPoint> Road2= cup2.PathPlanning();
+    CS.move(Road2);
+    
+    
+    getchar();
 }

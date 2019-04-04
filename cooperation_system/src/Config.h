@@ -27,6 +27,9 @@
 #include <Eigen/Core>
 #include <Eigen/Geometry>
 
+#include <vector>
+
+
 typedef int SocketDescriptor;
 typedef sockaddr_in ServerAddress;
 

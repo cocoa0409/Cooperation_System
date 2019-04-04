@@ -10,19 +10,25 @@
 #define ControlSystem_h
 #include "Hand.h"
 #include "Arm.h"
+#include "KeyPoint.h"
+#include "Config.h"
 
 class ControlSystem{
-private:
+public:
+    
     Hand hand_;
     Arm arm_;
     
-public:
-    
-    bool move()
-    
-    
+    ControlSystem();
+    ControlSystem(Hand & hand, Arm & arm);
+    ~ControlSystem();
     
     
-}
+    void move(std::vector<KeyPoint> & keypoints);
+    
+    
+    
+    
+};
 
 #endif /* ControlSystem_h */

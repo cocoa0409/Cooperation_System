@@ -19,7 +19,7 @@ int main(int argc, const char * argv[]){
         hand1.ReceiveTcp(res);
     }
     
-    Arm arm1={1,"127.0.0.1",3000};
+    Arm arm1={1,"127.0.0.1",3001};
     std::string sendset2[5]={"arm_test1","arm_test2","arm_test3","arm_test4","arm_test5"};
     arm1.ReceiveTcp(res);
     for(int i=0;i<=4;i++){

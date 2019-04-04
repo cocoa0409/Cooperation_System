@@ -34,6 +34,7 @@ Cup::Cup(int id,Eigen::Vector3d center,double radius,double height,double weight
     
     ROTATIONWorldToHand_ = WorldToCup_.rotation() * CupToHand_.rotation();
     EulerAngleWorldToHand_ = ROTATIONWorldToHand_.eulerAngles ( 2,1,0 ); //ZYX
+    HandCenterToWorldCord_ = HandCenterToWorldCord();
     
 }
 
@@ -85,27 +86,26 @@ Eigen::Isometry3d findCupToHand(double radius, double height,double experience){
 
 
 
-//给定 x y z轴、原点 情况下
-Cup::Cup(int id,Eigen::Vector3d center,double radius,double height,double weight,Eigen::Vector3d & X_axis,Eigen::Vector3d & Y_axis,Eigen::Vector3d & Z_axis){
-    X_axis.normalize();
-    Y_axis.normalize();
-    Z_axis.normalize();
-    
-    center_ = center;
-    X_axis_ = X_axis;
-    Y_axis_ = Y_axis;
-    Z_axis_ = Z_axis;
-    radius_ = radius;
-    height_ = height;
-    weight_ = weight;
-    
-    WorldToCup_ = findWorldToCup(center_, X_axis_, Y_axis_, Z_axis_);
-    CupToHand_ = findCupToHand(radius_, height_,1);
-    
-    ROTATIONWorldToHand_ = WorldToCup_.rotation() * CupToHand_.rotation();
-    EulerAngleWorldToHand_ = ROTATIONWorldToHand_.eulerAngles ( 2,1,0 ); //ZYX
-    
-}
+////给定 x y z轴、原点 情况下
+//Cup::Cup(int id,Eigen::Vector3d center,double radius,double height,double weight,Eigen::Vector3d & X_axis,Eigen::Vector3d & Y_axis,Eigen::Vector3d & Z_axis){
+//    X_axis.normalize();
+//    Y_axis.normalize();
+//    Z_axis.normalize();
+//
+//    center_ = center;
+//    X_axis_ = X_axis;
+//    Y_axis_ = Y_axis;
+//    Z_axis_ = Z_axis;
+//    radius_ = radius;
+//    height_ = height;
+//    weight_ = weight;
+//
+//    WorldToCup_ = findWorldToCup(center_, X_axis_, Y_axis_, Z_axis_);
+//    CupToHand_ = findCupToHand(radius_, height_,1);
+//
+//    ROTATIONWorldToHand_ = WorldToCup_.rotation() * CupToHand_.rotation();
+//    EulerAngleWorldToHand_ = ROTATIONWorldToHand_.eulerAngles ( 2,1,0 ); //ZYX
+//}
 
 Cup::~Cup(){
 }
@@ -127,3 +127,9 @@ Eigen::Vector3d Cup::HandCenterToWorldCord(){
     return CupCordToWorldCord(CupCord);
 }
 
+std::vector<KeyPoint> Cup::PathPlanning(){
+    std::vector<KeyPoint> RoadPoints;
+    KeyPoint kp_dest={HandCenterToWorldCord_,EulerAngleWorldToHand_,HandPara1_,HandPara2_,HandPara3_,HandPara4_,HandPara5_,HandPara6_};
+    RoadPoints.push_back(kp_dest);
+    return RoadPoints;
+}

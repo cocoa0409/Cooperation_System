@@ -31,7 +31,7 @@ public:
     //Methods
     bool SendTcp(std::string Message) const;
     bool ReceiveTcp(std::string & Message) const;
-    bool Arm_move() const;
+    void Arm_move(std::string & Send) const;
     
     friend std::ostream & operator<<(std::ostream &os, const Arm &c);
     
