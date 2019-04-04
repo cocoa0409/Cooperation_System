@@ -2,26 +2,42 @@
 //  main.cpp
 //  cooperation_system
 //
-//  Created by 兆吉 王 on 2019/4/1.
+//  Created by 兆吉 王 on 2019/4/3.
 //  Copyright © 2019 兆吉 王. All rights reserved.
 //
 
-#include <iostream>
-#include "src/Hand.h"
 
-#include <errno.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <netinet/in.h>
-#include <sys/socket.h>
-#include <unistd.h>
-#include <netdb.h>
-#include <arpa/inet.h>
-#include <fcntl.h>
-#include <stdlib.h>
-#include <string.h>
+#include "ControlSystem.h"
+#include "Cup.h"
 
 
-int main(int argc, const char * argv[])
+
+int main ( int argc, char** argv )
 {
+    Hand hand1={1,"127.0.0.1",3001};
+    Arm arm1={1,"127.0.0.1",3000};
+    ControlSystem CS={hand1,arm1};
+    
+    std::string RECV;
+    CS.hand_.ReceiveTcp(RECV);
+    CS.arm_.ReceiveTcp(RECV);
+    //先receive一次保证正确
+    
+    
+    Eigen::Vector3d Z_axis(1,1,0);
+    Z_axis.normalize();
+    Eigen::Vector3d center(100,200,300);
+    Cup cup1 ={1,center,5,10,0,Z_axis};
+    std::vector<KeyPoint> Road= cup1.PathPlanning();
+    CS.move(Road);
+    
+    
+    Eigen::Vector3d Z_axis_2(0,0,1);
+    Cup cup2 ={1,center,5,10,0,Z_axis_2};
+    std::vector<KeyPoint> Road2= cup2.PathPlanning();
+    CS.move(Road2);
+    
+    
+    getchar();
 }
+

@@ -17,7 +17,7 @@
 		4136235D2254AE4A007668B3 /* ControlSystem.h in Sources */ = {isa = PBXBuildFile; fileRef = 4136231B2251AA2A007668B3 /* ControlSystem.h */; };
 		4136235E2254AE4A007668B3 /* ControlSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413623222251AA86007668B3 /* ControlSystem.cpp */; };
 		413623642255AF7B007668B3 /* KeyPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413623632255AF7B007668B3 /* KeyPoint.cpp */; };
-		413623662255C50B007668B3 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4136233F22545822007668B3 /* test.cpp */; };
+		413623692255E9AD007668B3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4136230C2251A66F007668B3 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -198,7 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				413623662255C50B007668B3 /* test.cpp in Sources */,
+				413623692255E9AD007668B3 /* main.cpp in Sources */,
 				413623592254AE4A007668B3 /* Hand.h in Sources */,
 				413623642255AF7B007668B3 /* KeyPoint.cpp in Sources */,
 				4136235A2254AE4A007668B3 /* Hand.cpp in Sources */,
