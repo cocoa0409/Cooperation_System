@@ -14,14 +14,19 @@
 
 int main ( int argc, char** argv )
 {
+    //初始化手
     Hand hand1={1,"127.0.0.1",3001};
+    
+    //初始化臂
     Arm arm1={1,"127.0.0.1",3000};
+    
+    //初始化控制系统
     ControlSystem CS={hand1,arm1};
     
+    //先receive一次保证正确
     std::string RECV;
     CS.hand_.ReceiveTcp(RECV);
     CS.arm_.ReceiveTcp(RECV);
-    //先receive一次保证正确
     
     
     Eigen::Vector3d Z_axis(1,1,0);

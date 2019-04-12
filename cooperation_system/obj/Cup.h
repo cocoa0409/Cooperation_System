@@ -29,6 +29,9 @@ private:
     Eigen::Isometry3d CupToHand_;//这个是 机械手坐标系相对于物体坐标系
     
     int HandPara1_,HandPara2_,HandPara3_,HandPara4_,HandPara5_,HandPara6_;//手的六个参数
+    
+    
+    
     Eigen::Matrix3d ROTATIONWorldToHand_; //最关键 代表了从世界坐标系到机器手坐标系所需的旋转
     Eigen::Vector3d EulerAngleWorldToHand_; //最关键 代表了从世界坐标系到机器手坐标系的欧拉角
     Eigen::Vector3d HandCenterToWorldCord_;

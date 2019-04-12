@@ -93,7 +93,7 @@ void Arm::Arm_move(std::string & Send) const{
     std::string Recv = "" ;
     SendTcp(Send);
     ReceiveTcp(Recv);
-    if ( Recv == "ok!Armmovefinished!"){
+    if ( Recv == "okarm"){
         std::cout<<"<Arm>|-----move ok! : "+Send<<std::endl;
     }
 }

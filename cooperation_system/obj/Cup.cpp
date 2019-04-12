@@ -36,6 +36,13 @@ Cup::Cup(int id,Eigen::Vector3d center,double radius,double height,double weight
     EulerAngleWorldToHand_ = ROTATIONWorldToHand_.eulerAngles ( 2,1,0 ); //ZYX
     HandCenterToWorldCord_ = HandCenterToWorldCord();
     
+    HandPara1_ = 1;
+    HandPara2_ = 2;
+    HandPara3_ = 3;
+    HandPara4_ = 4;
+    HandPara5_ = 5;
+    HandPara6_ = 6;
+    
 }
 
 Eigen::Vector3d AUTOfindYaxis(Eigen::Vector3d & center,Eigen::Vector3d & Z_axis,double epsilon){
@@ -83,29 +90,6 @@ Eigen::Isometry3d findCupToHand(double radius, double height,double experience){
     
     return CupToHand;
 }
-
-
-
-////给定 x y z轴、原点 情况下
-//Cup::Cup(int id,Eigen::Vector3d center,double radius,double height,double weight,Eigen::Vector3d & X_axis,Eigen::Vector3d & Y_axis,Eigen::Vector3d & Z_axis){
-//    X_axis.normalize();
-//    Y_axis.normalize();
-//    Z_axis.normalize();
-//
-//    center_ = center;
-//    X_axis_ = X_axis;
-//    Y_axis_ = Y_axis;
-//    Z_axis_ = Z_axis;
-//    radius_ = radius;
-//    height_ = height;
-//    weight_ = weight;
-//
-//    WorldToCup_ = findWorldToCup(center_, X_axis_, Y_axis_, Z_axis_);
-//    CupToHand_ = findCupToHand(radius_, height_,1);
-//
-//    ROTATIONWorldToHand_ = WorldToCup_.rotation() * CupToHand_.rotation();
-//    EulerAngleWorldToHand_ = ROTATIONWorldToHand_.eulerAngles ( 2,1,0 ); //ZYX
-//}
 
 Cup::~Cup(){
 }

@@ -26,7 +26,7 @@
 //eigen
 #include <Eigen/Core>
 #include <Eigen/Geometry>
-
+#include <cmath>
 #include <vector>
 
 

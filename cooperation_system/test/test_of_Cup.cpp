@@ -12,9 +12,9 @@
 using namespace std;
 int main(){
     Eigen::Vector3d center(100,200,300);
-    //杯子平躺 Z轴方向指向(1,1,0)
+    //杯子平躺 Z轴方向指向(0,0,1)
     
-    Eigen::Vector3d Z_axis(1,1,0);
+    Eigen::Vector3d Z_axis(0,0,1);
     Z_axis.normalize();
     
     Cup cup1 ={1,center,5,10,78.0,Z_axis};

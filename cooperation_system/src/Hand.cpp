@@ -93,7 +93,7 @@ void Hand::Hand_move(std::string & Send) const{
     std::string Recv = "" ;
     SendTcp(Send);
     ReceiveTcp(Recv);
-    if ( Recv == "ok!Handmovefinished!"){
+    if ( Recv == "okhand"){
         std::cout<<"<Hand>|-----move ok! : "+Send<<std::endl;
     }
 }
