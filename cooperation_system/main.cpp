@@ -28,13 +28,16 @@ int main ( int argc, char** argv )
     //    CS.arm_.ReceiveTcp(RECV);
     //
     //
-    Eigen::Vector3d center(-25.54,-77.76,5);
+    Eigen::Vector3d center(-12.846,-72.1245,-5.5);
     
-    Eigen::Vector3d Z_axis_2(0,0,1);
+    Eigen::Vector3d Z_axis_2(-1,-1,0);
     
     Z_axis_2.normalize();
-    Cup cup ={1,center,3.4,14,0,Z_axis_2};
+    Cup cup ={1,center,5,15,0,Z_axis_2};
     std::vector<KeyPoint> Road2= cup.PathPlanning();
+    CS.move(Road2);
+    CS.move(Road2);
+    CS.move(Road2);
     CS.move(Road2);
     getchar();
 }

@@ -7,6 +7,9 @@
 //
 
 #include "Cup.h"
+#define ANGEL_UNKNOWN 15
+#define THETA 0.432669
+
 
 std::string findDirection(Eigen::Vector3d & Z_axis,double epsilon);
 Eigen::Vector3d findYaxis(Eigen::Vector3d & center,Eigen::Vector3d & Z_axis,std::string & Direction_of_Z_axis);
@@ -29,7 +32,7 @@ Cup::Cup(int id,Eigen::Vector3d center,double radius,double height,double weight
     weight_ = weight;
     
     Direction_of_Z_axis_ = findDirection(Z_axis_, 0.05);
-    
+    std::cout<<"建系方式 : "<<Direction_of_Z_axis_<<std::endl;
     Y_axis_ = findYaxis(center_, Z_axis_ , Direction_of_Z_axis_);
     X_axis_ = findXaxis(Y_axis_, Z_axis_);
     WorldToCup_ = findWorldToCup(center_, X_axis_, Y_axis_, Z_axis_);
@@ -100,21 +103,21 @@ Eigen::Isometry3d findCupToHand(double radius, double height,double experience, 
     Eigen::Matrix3d rotation_matrix,THETA_OF_HAND;
     rotation_matrix<<1,0,0,0,0,1,0,-1,0;
     CupToHand = Eigen::Isometry3d::Identity();
-    double ANGLE_OF_HANDS_THUMB_AND_INDEXFINGER= 66*M_PI/180;
+//    double ANGLE_OF_HANDS_THUMB_AND_INDEXFINGER= ANGEL_UNKNOWN*M_PI/180;
     
     if(Direction_of_Z_axis == "perpendicular"){//垂直建系
         CupToHand.rotate ( rotation_matrix );
-        CupToHand.pretranslate( Eigen::Vector3d( -radius-experience*2 ,-radius/tan(ANGLE_OF_HANDS_THUMB_AND_INDEXFINGER/2)+6-experience, height/2 ));//做个偏移
+        CupToHand.pretranslate( Eigen::Vector3d( -radius-experience*2 ,abs(-radius/tan(M_PI/6)+6)-experience, height/2 ));//做个偏移
         //    CupToHand.pretranslate(Eigen::Vector3d( -radius-experience*2 ,0, height/2 ));
     }
     else{//歪斜建系
         assert( Direction_of_Z_axis == "oblique");
-        double THETA = atan2(9*sin(ANGLE_OF_HANDS_THUMB_AND_INDEXFINGER),15-9*cos(ANGLE_OF_HANDS_THUMB_AND_INDEXFINGER));
+//        double THETA = atan2(9.5*sin(ANGLE_OF_HANDS_THUMB_AND_INDEXFINGER),14.5-9.5*cos(ANGLE_OF_HANDS_THUMB_AND_INDEXFINGER));
         std::cout<<THETA;
         THETA_OF_HAND <<cos(THETA),-sin(THETA),0,sin(THETA),cos(THETA),0,0,0,1;
         
         CupToHand.rotate( THETA_OF_HAND.transpose() * rotation_matrix  );
-        CupToHand.pretranslate (THETA_OF_HAND.transpose()* Eigen::Vector3d( -radius-experience*2 ,-radius/tan(ANGLE_OF_HANDS_THUMB_AND_INDEXFINGER/2)+6-experience, height/2 ));
+        CupToHand.pretranslate (THETA_OF_HAND.transpose()* Eigen::Vector3d( -radius-experience*2 ,abs(-radius/tan(M_PI/6)+6)-experience, height/2 ));
     }
     return CupToHand;
 }
@@ -151,18 +154,25 @@ std::vector<KeyPoint> Cup::PathPlanning(){
     if(Direction_of_Z_axis_ == "perpendicular"){//垂直建系
         Eigen::Vector3d BASE_Z_UP_HandCenterToWorld = HandCenterToWorldCord_;
         BASE_Z_UP_HandCenterToWorld[2] += 20;
-        RoadPoints.push_back(KeyPoint{BASE_Z_UP_HandCenterToWorld,EulerAngleWorldToHand_});
+        
+        KeyPoint KP1= {BASE_Z_UP_HandCenterToWorld,EulerAngleWorldToHand_};
         KeyPoint kp_dest={HandCenterToWorldCord_,EulerAngleWorldToHand_,HandPara1_,HandPara2_,HandPara3_,HandPara4_,HandPara5_,HandPara6_};
+        
+        RoadPoints.push_back(KP1);
         RoadPoints.push_back(kp_dest);
     }
     else{//歪斜建系
         assert( Direction_of_Z_axis_ == "oblique");
-        Eigen::Vector3d HAND_Z_UP_HandCenter = Eigen::Vector3d::Zero();
-        HAND_Z_UP_HandCenter[2] -= 20;
-        Eigen::Vector3d HAND_Z_UP_HandCenterToWorld = HandCordToWorldCord(HAND_Z_UP_HandCenter);
-        
-        RoadPoints.push_back(KeyPoint{HAND_Z_UP_HandCenterToWorld,EulerAngleWorldToHand_});
+        Eigen::Vector3d BASE_Z_UP_HandCenterToWorld = HandCenterToWorldCord_;
+        BASE_Z_UP_HandCenterToWorld[2] += 20;
+        KeyPoint KP1= {BASE_Z_UP_HandCenterToWorld,EulerAngleWorldToHand_};
         KeyPoint kp_dest={HandCenterToWorldCord_,EulerAngleWorldToHand_,HandPara1_,HandPara2_,HandPara3_,HandPara4_,HandPara5_,HandPara6_};
+        
+        RoadPoints.push_back(KP1);
+        RoadPoints.push_back(kp_dest);
+        RoadPoints.push_back(KP1);
+        RoadPoints.push_back(kp_dest);
+        RoadPoints.push_back(KP1);
         RoadPoints.push_back(kp_dest);
     }
 

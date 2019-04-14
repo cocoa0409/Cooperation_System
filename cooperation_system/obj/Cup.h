@@ -14,7 +14,6 @@
 
 #include "../src/ControlSystem.h"
 
-//#define ANGLE_OF_HANDS_THUMB_AND_INDEXFINGER 80*M_PI/180
 
 class Cup{
 private:
