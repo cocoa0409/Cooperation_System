@@ -12,6 +12,10 @@
 #include "../src/Config.h"
 #include "../src/KeyPoint.h"
 
+#include "../src/ControlSystem.h"
+
+//#define ANGLE_OF_HANDS_THUMB_AND_INDEXFINGER 80*M_PI/180
+
 class Cup{
 private:
     int id;
@@ -19,10 +23,12 @@ private:
     double radius_;
     double height_;
     double weight_;
+    
 
     Eigen::Vector3d X_axis_;
     Eigen::Vector3d Y_axis_;
     Eigen::Vector3d Z_axis_;
+    std::string Direction_of_Z_axis_;
     
 
     Eigen::Isometry3d WorldToCup_;//这个是自己建 物体坐标系相对于基坐标系
@@ -36,15 +42,17 @@ private:
     Eigen::Vector3d EulerAngleWorldToHand_; //最关键 代表了从世界坐标系到机器手坐标系的欧拉角
     Eigen::Vector3d HandCenterToWorldCord_;
     
+    ControlSystem CS_;
+    
 public:
     //Constructor
     Cup();
     Cup(int id,Eigen::Vector3d center,double radius,double height,double weight,Eigen::Vector3d & Z_axis);//自动建系
-    Cup(int id,Eigen::Vector3d center,double radius,double height,double weight,Eigen::Vector3d & X_axis,Eigen::Vector3d & Y_axis,Eigen::Vector3d & Z_axis);//给定系
     ~Cup();
     
     //Methods
     Eigen::Vector3d CupCordToWorldCord(Eigen::Vector3d & CupCord);
+    Eigen::Vector3d HandCordToWorldCord(Eigen::Vector3d & HandCord);
     Eigen::Vector3d HandCenterToCupCord();
     Eigen::Vector3d HandCenterToWorldCord();
 

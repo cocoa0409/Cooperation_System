@@ -18,29 +18,13 @@ using namespace std;
 
 int main ( int argc, char** argv )
 {
-    Hand hand1={1,"127.0.0.1",3001};
-    Arm arm1={1,"127.0.0.1",3000};
-    ControlSystem CS={hand1,arm1};
-
-    string RECV;
-    CS.hand_.ReceiveTcp(RECV);
-    CS.arm_.ReceiveTcp(RECV);
-    //先receive一次保证正确
+    Arm arm1={1,"192.168.1.100",6666};
+    std::string sendset1[5]={"0.017317,-0.644562,0.114096,-90,-44,-180","0.017317,-0.644562,0.134096,-90,-44,-180","0.017317,-0.644562,0.154096,-90,-44,-180","0.017317,-0.644562,0.174096,-90,-44,-180","0.017317,-0.644562,0.194096,-90,-44,-180"},res;
+    for(int i=0;i<=4;i++){
+        arm1.SendTcp(sendset1[i]);
+        arm1.ReceiveTcp(res);
+        std::cout<<res;
     
-
-    Eigen::Vector3d Z_axis(1,1,0);
-    Z_axis.normalize();
-    Eigen::Vector3d center(100,200,300);
-    Cup cup1 ={1,center,5,10,0,Z_axis};
-    vector<KeyPoint> Road= cup1.PathPlanning();
-    CS.move(Road);
-    
-    
-    Eigen::Vector3d Z_axis_2(0,0,1);
-    Cup cup2 ={1,center,5,10,0,Z_axis_2};
-    vector<KeyPoint> Road2= cup2.PathPlanning();
-    CS.move(Road2);
-    
-    
+    }
     getchar();
 }

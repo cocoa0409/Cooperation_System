@@ -32,11 +32,13 @@ void ControlSystem::move(std::vector<KeyPoint> & keypoints){
             HandMessage = keypoints[j-1].TransKPToHandMessage();
             ArmMessage = keypoints[j-1].TransKPToArmMessage();
             arm_. Arm_move(ArmMessage);
-            hand_. Hand_move(HandMessage);
+            hand_. Hand_move_withoutCertification(HandMessage);
+            sleep(2);
         }
         else{
             ArmMessage = keypoints[j-1].TransKPToArmMessage();
             arm_. Arm_move(ArmMessage);
+            sleep(0.05);
         }
     }
 }

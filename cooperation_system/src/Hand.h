@@ -32,6 +32,7 @@ public:
     bool SendTcp(std::string Message) const;
     bool ReceiveTcp(std::string & Message) const;
     void Hand_move(std::string & Send) const;
+    void Hand_move_withoutCertification(std::string & Send) const;
     
     friend std::ostream & operator<<(std::ostream &os, const Hand &c);
     

@@ -98,6 +98,11 @@ void Hand::Hand_move(std::string & Send) const{
     }
 }
 
+void Hand::Hand_move_withoutCertification(std::string & Send) const{
+    SendTcp(Send);
+    std::cout<<"<Hand>|-----move ok! : "+Send<<std::endl;
+}
+
 
 std::ostream & operator<<(std::ostream &os, const Hand &c){
     os<<"Hand No."<<c.id_<<std::endl<<"IP: "+c.ip_<<std::endl<<"Port: "<<c.port_ <<std::endl;

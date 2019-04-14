@@ -52,6 +52,7 @@ std::string KeyPoint::TransKPToHandMessage(){
 std::string KeyPoint::TransKPToArmMessage(){
     std::ostringstream out;
     out.precision(6);
+    
     out<<std::fixed;
     out<<HandCenterINWorldCord_[0]/100<<","<<HandCenterINWorldCord_[1]/100<<","<<HandCenterINWorldCord_[2]/100<<","<<EulerAngleWorldToHand_[0]*(180/M_PI)<<","<<EulerAngleWorldToHand_[1]*(180/M_PI)<<","<<EulerAngleWorldToHand_[2]*(180/M_PI);
     std::string str= out.str();

@@ -98,9 +98,6 @@ void Arm::Arm_move(std::string & Send) const{
     }
 }
 
-
-
-
 std::ostream & operator<<(std::ostream &os, const Arm &c){
     os<<"Arm No."<<c.id_<<std::endl<<"IP: "+c.ip_<<std::endl<<"Port: "<<c.port_ <<std::endl;
     return os;

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		411054E32262D5EC00385175 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4136230C2251A66F007668B3 /* main.cpp */; };
 		413623542254AD6D007668B3 /* Cup.h in Sources */ = {isa = PBXBuildFile; fileRef = 4136231C2251AA33007668B3 /* Cup.h */; };
 		413623552254AD6D007668B3 /* Cup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4136233D225455B8007668B3 /* Cup.cpp */; };
 		413623582254AE38007668B3 /* Config.h in Sources */ = {isa = PBXBuildFile; fileRef = 413623262251AD57007668B3 /* Config.h */; };
@@ -17,7 +18,6 @@
 		4136235D2254AE4A007668B3 /* ControlSystem.h in Sources */ = {isa = PBXBuildFile; fileRef = 4136231B2251AA2A007668B3 /* ControlSystem.h */; };
 		4136235E2254AE4A007668B3 /* ControlSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413623222251AA86007668B3 /* ControlSystem.cpp */; };
 		413623642255AF7B007668B3 /* KeyPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 413623632255AF7B007668B3 /* KeyPoint.cpp */; };
-		41BB379C225DC8640096CA61 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4136230C2251A66F007668B3 /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +33,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		411054E12262D55800385175 /* test_of_INSERT_GRASP.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_of_INSERT_GRASP.cpp; sourceTree = "<group>"; };
 		413623092251A66F007668B3 /* cooperation_system */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = cooperation_system; sourceTree = BUILT_PRODUCTS_DIR; };
 		4136230C2251A66F007668B3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		413623192251AA14007668B3 /* Hand.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Hand.h; sourceTree = "<group>"; };
@@ -54,6 +55,7 @@
 		413623622255AA47007668B3 /* KeyPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyPoint.h; sourceTree = "<group>"; };
 		413623632255AF7B007668B3 /* KeyPoint.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyPoint.cpp; sourceTree = "<group>"; };
 		413623672255D29F007668B3 /* test_of_ControlSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_of_ControlSystem.cpp; sourceTree = "<group>"; };
+		4164D8F72261DEC500EFE0F8 /* REAL_TIME_TEST_CUP_perpendicular.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = REAL_TIME_TEST_CUP_perpendicular.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,8 +138,10 @@
 				4136233922534770007668B3 /* test_of_eigen.cpp */,
 				4136233B225449B9007668B3 /* test_of_eigen_geo.cpp */,
 				41362341225460FF007668B3 /* test_of_Cup.cpp */,
+				4164D8F72261DEC500EFE0F8 /* REAL_TIME_TEST_CUP_perpendicular.cpp */,
 				413623672255D29F007668B3 /* test_of_ControlSystem.cpp */,
 				4136233F22545822007668B3 /* test.cpp */,
+				411054E12262D55800385175 /* test_of_INSERT_GRASP.cpp */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -198,7 +202,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41BB379C225DC8640096CA61 /* main.cpp in Sources */,
+				411054E32262D5EC00385175 /* main.cpp in Sources */,
 				413623592254AE4A007668B3 /* Hand.h in Sources */,
 				413623642255AF7B007668B3 /* KeyPoint.cpp in Sources */,
 				4136235A2254AE4A007668B3 /* Hand.cpp in Sources */,

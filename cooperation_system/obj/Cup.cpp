@@ -8,10 +8,11 @@
 
 #include "Cup.h"
 
-Eigen::Vector3d AUTOfindYaxis(Eigen::Vector3d & center,Eigen::Vector3d & Z_axis,double epsilon);
+std::string findDirection(Eigen::Vector3d & Z_axis,double epsilon);
+Eigen::Vector3d findYaxis(Eigen::Vector3d & center,Eigen::Vector3d & Z_axis,std::string & Direction_of_Z_axis);
 Eigen::Vector3d findXaxis(Eigen::Vector3d & Y_axis, Eigen::Vector3d & Z_axis);
 Eigen::Isometry3d findWorldToCup(Eigen::Vector3d & center,Eigen::Vector3d & X_axis,Eigen::Vector3d & Y_axis,Eigen::Vector3d & Z_axis);
-Eigen::Isometry3d findCupToHand(double radius, double height,double experience=1);
+Eigen::Isometry3d findCupToHand(double radius, double height,double experience, std::string & Direction_of_Z_axis);
 
 Cup::Cup(){
     ROTATIONWorldToHand_ = Eigen::Matrix3d::Identity();
@@ -27,27 +28,41 @@ Cup::Cup(int id,Eigen::Vector3d center,double radius,double height,double weight
     height_ = height;
     weight_ = weight;
     
-    Y_axis_ = AUTOfindYaxis(center_, Z_axis_ , 0.05);
+    Direction_of_Z_axis_ = findDirection(Z_axis_, 0.05);
+    
+    Y_axis_ = findYaxis(center_, Z_axis_ , Direction_of_Z_axis_);
     X_axis_ = findXaxis(Y_axis_, Z_axis_);
     WorldToCup_ = findWorldToCup(center_, X_axis_, Y_axis_, Z_axis_);
-    CupToHand_ = findCupToHand(radius_, height_,1);
+    
+    
+    CupToHand_ = findCupToHand(radius_, height_, 0.5 , Direction_of_Z_axis_); // exp0.5
+    
+    
     
     ROTATIONWorldToHand_ = WorldToCup_.rotation() * CupToHand_.rotation();
     EulerAngleWorldToHand_ = ROTATIONWorldToHand_.eulerAngles ( 2,1,0 ); //ZYX
     HandCenterToWorldCord_ = HandCenterToWorldCord();
     
-    HandPara1_ = 1;
-    HandPara2_ = 2;
-    HandPara3_ = 3;
-    HandPara4_ = 4;
-    HandPara5_ = 5;
-    HandPara6_ = 6;
-    
+    HandPara1_ = 800;
+    HandPara2_ = 800;
+    HandPara3_ = 800;
+    HandPara4_ = 800;
+    HandPara5_ = 800;
+    HandPara6_ = 2000;
 }
 
-Eigen::Vector3d AUTOfindYaxis(Eigen::Vector3d & center,Eigen::Vector3d & Z_axis,double epsilon){
+std::string findDirection(Eigen::Vector3d & Z_axis,double epsilon){
     double NormCrossBetweenZaxisAndZ = Z_axis.dot(Eigen::Vector3d(0,0,1)); //通过NormCrossBetweenZaxisAndZ判断建系方式
     if(NormCrossBetweenZaxisAndZ <= -1+epsilon || NormCrossBetweenZaxisAndZ >= 1-epsilon){
+        return "perpendicular";
+    }
+    else{
+        return "oblique";
+    }
+}
+
+Eigen::Vector3d findYaxis(Eigen::Vector3d & center,Eigen::Vector3d & Z_axis,std::string & Direction_of_Z_axis){
+    if(Direction_of_Z_axis == "perpendicular"){
         Z_axis=Eigen::Vector3d(0,0,1);
         Eigen::Vector3d Y (center[0],center[1],0);
         Y.normalize();
@@ -55,6 +70,7 @@ Eigen::Vector3d AUTOfindYaxis(Eigen::Vector3d & center,Eigen::Vector3d & Z_axis,
         return Y;
     }
     else{
+        assert( Direction_of_Z_axis == "oblique");
         Eigen::Vector3d Y = - Z_axis.cross(Eigen::Vector3d(0,0,1));
         Y.normalize();
         assert( 0 == Z_axis.dot(Y));
@@ -79,15 +95,27 @@ Eigen::Isometry3d findWorldToCup(Eigen::Vector3d & center,Eigen::Vector3d & X_ax
     return WorldToCup;
 }
 
-Eigen::Isometry3d findCupToHand(double radius, double height,double experience){
+Eigen::Isometry3d findCupToHand(double radius, double height,double experience, std::string & Direction_of_Z_axis){
     Eigen::Isometry3d CupToHand;
-    Eigen::Matrix3d rotation_matrix;
+    Eigen::Matrix3d rotation_matrix,THETA_OF_HAND;
     rotation_matrix<<1,0,0,0,0,1,0,-1,0;
-    
     CupToHand = Eigen::Isometry3d::Identity();
-    CupToHand.rotate ( rotation_matrix );
-    CupToHand.pretranslate( Eigen::Vector3d( -radius-experience ,0, height/2 ));
+    double ANGLE_OF_HANDS_THUMB_AND_INDEXFINGER= 66*M_PI/180;
     
+    if(Direction_of_Z_axis == "perpendicular"){//垂直建系
+        CupToHand.rotate ( rotation_matrix );
+        CupToHand.pretranslate( Eigen::Vector3d( -radius-experience*2 ,-radius/tan(ANGLE_OF_HANDS_THUMB_AND_INDEXFINGER/2)+6-experience, height/2 ));//做个偏移
+        //    CupToHand.pretranslate(Eigen::Vector3d( -radius-experience*2 ,0, height/2 ));
+    }
+    else{//歪斜建系
+        assert( Direction_of_Z_axis == "oblique");
+        double THETA = atan2(9*sin(ANGLE_OF_HANDS_THUMB_AND_INDEXFINGER),15-9*cos(ANGLE_OF_HANDS_THUMB_AND_INDEXFINGER));
+        std::cout<<THETA;
+        THETA_OF_HAND <<cos(THETA),-sin(THETA),0,sin(THETA),cos(THETA),0,0,0,1;
+        
+        CupToHand.rotate( THETA_OF_HAND.transpose() * rotation_matrix  );
+        CupToHand.pretranslate (THETA_OF_HAND.transpose()* Eigen::Vector3d( -radius-experience*2 ,-radius/tan(ANGLE_OF_HANDS_THUMB_AND_INDEXFINGER/2)+6-experience, height/2 ));
+    }
     return CupToHand;
 }
 
@@ -96,24 +124,47 @@ Cup::~Cup(){
 
 Eigen::Vector3d Cup::CupCordToWorldCord(Eigen::Vector3d & CupCord){
     Eigen::Vector3d WorldCord = WorldToCup_ * CupCord;
-    std::cout<<CupCord.transpose()<<" CupCordToWorldCord tranformed -> "<< WorldCord.transpose()<<std::endl;
+//    std::cout<<CupCord.transpose()<<" CupCordToWorldCord tranformed -> "<< WorldCord.transpose()<<std::endl;
     return WorldCord;
+}
+
+Eigen::Vector3d Cup::HandCordToWorldCord(Eigen::Vector3d & HandCord){
+    Eigen::Vector3d CupCord = WorldToCup_ * CupToHand_ * HandCord;
+    return CupCord;
+    
 }
 
 Eigen::Vector3d Cup::HandCenterToCupCord(){
     Eigen::Vector3d CupCord = CupToHand_ * Eigen::Vector3d::Zero();
-    std::cout<<"HandCenterToCupCord tranformed -> "<< CupCord.transpose()<<std::endl;
+//    std::cout<<"HandCenterToCupCord tranformed -> "<< CupCord.transpose()<<std::endl;
     return CupCord;
 }
-
 Eigen::Vector3d Cup::HandCenterToWorldCord(){
     Eigen::Vector3d CupCord =HandCenterToCupCord();
     return CupCordToWorldCord(CupCord);
 }
 
+
 std::vector<KeyPoint> Cup::PathPlanning(){
     std::vector<KeyPoint> RoadPoints;
-    KeyPoint kp_dest={HandCenterToWorldCord_,EulerAngleWorldToHand_,HandPara1_,HandPara2_,HandPara3_,HandPara4_,HandPara5_,HandPara6_};
-    RoadPoints.push_back(kp_dest);
+    
+    if(Direction_of_Z_axis_ == "perpendicular"){//垂直建系
+        Eigen::Vector3d BASE_Z_UP_HandCenterToWorld = HandCenterToWorldCord_;
+        BASE_Z_UP_HandCenterToWorld[2] += 20;
+        RoadPoints.push_back(KeyPoint{BASE_Z_UP_HandCenterToWorld,EulerAngleWorldToHand_});
+        KeyPoint kp_dest={HandCenterToWorldCord_,EulerAngleWorldToHand_,HandPara1_,HandPara2_,HandPara3_,HandPara4_,HandPara5_,HandPara6_};
+        RoadPoints.push_back(kp_dest);
+    }
+    else{//歪斜建系
+        assert( Direction_of_Z_axis_ == "oblique");
+        Eigen::Vector3d HAND_Z_UP_HandCenter = Eigen::Vector3d::Zero();
+        HAND_Z_UP_HandCenter[2] -= 20;
+        Eigen::Vector3d HAND_Z_UP_HandCenterToWorld = HandCordToWorldCord(HAND_Z_UP_HandCenter);
+        
+        RoadPoints.push_back(KeyPoint{HAND_Z_UP_HandCenterToWorld,EulerAngleWorldToHand_});
+        KeyPoint kp_dest={HandCenterToWorldCord_,EulerAngleWorldToHand_,HandPara1_,HandPara2_,HandPara3_,HandPara4_,HandPara5_,HandPara6_};
+        RoadPoints.push_back(kp_dest);
+    }
+
     return RoadPoints;
 }
