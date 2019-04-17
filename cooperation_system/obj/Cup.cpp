@@ -107,7 +107,7 @@ Eigen::Isometry3d findCupToHand(double radius, double height,double experience, 
     
     if(Direction_of_Z_axis == "perpendicular"){//垂直建系
         CupToHand.rotate ( rotation_matrix );
-        CupToHand.pretranslate( Eigen::Vector3d( -radius-experience*2 ,abs(-radius/tan(M_PI/6)+6)-experience, height/2 ));//做个偏移
+        CupToHand.pretranslate( Eigen::Vector3d( -radius-experience*2 ,-radius/tan(M_PI/6)+6-experience, height/2 ));//做个偏移
         //    CupToHand.pretranslate(Eigen::Vector3d( -radius-experience*2 ,0, height/2 ));
     }
     else{//歪斜建系
@@ -117,7 +117,7 @@ Eigen::Isometry3d findCupToHand(double radius, double height,double experience, 
         THETA_OF_HAND <<cos(THETA),-sin(THETA),0,sin(THETA),cos(THETA),0,0,0,1;
         
         CupToHand.rotate( THETA_OF_HAND.transpose() * rotation_matrix  );
-        CupToHand.pretranslate (THETA_OF_HAND.transpose()* Eigen::Vector3d( -radius-experience*2 ,abs(-radius/tan(M_PI/6)+6)-experience, height/2 ));
+        CupToHand.pretranslate (THETA_OF_HAND.transpose()* Eigen::Vector3d( -radius-experience*2 ,-radius/tan(M_PI/6)+6-experience, height/2 ));
     }
     return CupToHand;
 }
